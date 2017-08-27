@@ -1,1 +1,0 @@
-A simple SSM web template.
