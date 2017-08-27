@@ -11,8 +11,8 @@
     <modules>
         <module>common-web-parent</module>
         <module>common-tool</module>
-        <module>common-web</module>
         <module>common-test</module>
+        <module>common-core</module>
     </modules>
 
     <properties>

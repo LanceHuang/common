@@ -10,6 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>common-web-parent</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>common-web-template</module>
+    </modules>
 
 
     <properties>

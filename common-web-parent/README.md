@@ -1,0 +1,1 @@
+Managing those dependency what a web project frequently used.
