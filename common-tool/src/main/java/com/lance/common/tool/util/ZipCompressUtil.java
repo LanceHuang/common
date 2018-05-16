@@ -68,8 +68,9 @@ public class ZipCompressUtil implements ICompressUtils {
     }
 
     private static void addFiles2Queue(Queue<Pair<File, String>> queue, File[] files, String outputPath) {
-        for (File file : files)
+        for (File file : files) {
             queue.add(new Pair<File, String>(file, outputPath));
+        }
     }
 
 
@@ -85,8 +86,9 @@ public class ZipCompressUtil implements ICompressUtils {
         mkdir(outputPath);
 
         ZipInputStream in = null;
+        ZipFile zipFile = null;
         try {
-            ZipFile zipFile = new ZipFile(zipFilename);
+            zipFile = new ZipFile(zipFilename);
             in = new ZipInputStream(new FileInputStream(zipFilename));
 
             ZipEntry entry = null;
@@ -98,6 +100,7 @@ public class ZipCompressUtil implements ICompressUtils {
         } catch (IOException e) {
             throw new IOException("Failed to uncompress file", e);
         } finally {
+            FileUtils.closeQuietly(zipFile);
             FileUtils.closeQuietly(in);
         }
     }
