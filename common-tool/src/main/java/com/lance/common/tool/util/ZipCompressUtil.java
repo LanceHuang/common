@@ -100,8 +100,8 @@ public class ZipCompressUtil implements ICompressUtils {
         } catch (IOException e) {
             throw new IOException("Failed to uncompress file", e);
         } finally {
-            FileUtils.closeQuietly(zipFile);
             FileUtils.closeQuietly(in);
+            FileUtils.closeQuietly(zipFile);
         }
     }
 

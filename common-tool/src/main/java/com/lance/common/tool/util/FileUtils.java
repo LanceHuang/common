@@ -63,7 +63,7 @@ public class FileUtils {
             throw new IOException("Failed to copy stream", e);
         } finally {
             closeQuietly(in);
-            closeQuietly(in);
+            closeQuietly(out);
         }
     }
 
