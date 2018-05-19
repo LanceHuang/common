@@ -95,7 +95,11 @@ public class ZipCompressUtil implements ICompressUtils {
             while ((entry = in.getNextEntry()) != null) {
                 String newFilename = outputPath + File.separator + entry.getName();
                 mkParentDir(newFilename);
-                FileUtils.copyAndClose(zipFile.getInputStream(entry), new FileOutputStream(newFilename));
+                if (entry.isDirectory()) {
+                    mkdir(newFilename);
+                } else {
+                    FileUtils.copyAndClose(zipFile.getInputStream(entry), new FileOutputStream(newFilename));
+                }
             }
         } catch (IOException e) {
             throw new IOException("Failed to uncompress file", e);
