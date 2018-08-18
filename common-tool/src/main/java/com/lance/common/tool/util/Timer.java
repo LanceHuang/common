@@ -1,7 +1,14 @@
 package com.lance.common.tool.util;
 
 /**
- * Millisecond timing for test
+ * Millisecond timing for test. Thread-unsafe
+ * Demo:
+ * <pre>
+ *     Time.time();
+ *     //Do sth
+ *     Time.time();
+ *     System.out.println(Timer.interval());
+ * </pre>
  *
  * @author Lance
  * @date 2016/11/6
