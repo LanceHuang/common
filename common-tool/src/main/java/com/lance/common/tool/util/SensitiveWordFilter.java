@@ -25,6 +25,8 @@ public class SensitiveWordFilter {
 
     private DfaNode rootNode;
 
+    //TODO White list
+
     public SensitiveWordFilter(String locations) {
         this.locations = locations;
         init();
@@ -215,14 +217,20 @@ public class SensitiveWordFilter {
         }
 
         public boolean hasChild(char c) {
+            c = Character.toLowerCase(c);
+
             return null != child && child.containsKey(c);
         }
 
         public DfaNode findChild(char c) {
+            c = Character.toLowerCase(c);
+
             return (null != child && child.containsKey(c)) ? child.get(c) : null;
         }
 
         public DfaNode addChild(char c) {
+            c = Character.toLowerCase(c);
+
             if (null == child) {
                 child = new HashMap<>();
             }
