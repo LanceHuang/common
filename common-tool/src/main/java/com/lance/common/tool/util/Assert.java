@@ -17,8 +17,15 @@ public class Assert {
      * @throws IllegalArgumentException object is {@code null}
      */
     public static void assertNotNull(Object obj, String msgFormat, Object... params) {
-        if (null == obj)
+        if (null == obj) {
             throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+        }
+    }
+
+    public static void assertNotNull(Object obj) {
+        if (null == obj) {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -29,9 +36,23 @@ public class Assert {
      * @param params    parameters
      * @throws IllegalArgumentException object is {@code null}
      */
+    @Deprecated
     public static void assertNotNullOrEmpty(String str, String msgFormat, Object... params) {
-        if (null == str || str.isEmpty())
+        if (null == str || str.isEmpty()) {
             throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+        }
+    }
+
+    public static void assertNotBlank(String str, String msgFormat, Object... params) {
+        if (null == str || str.isEmpty()) {
+            throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+        }
+    }
+
+    public static void assertNotBlank(String str) {
+        if (null == str || str.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -44,8 +65,9 @@ public class Assert {
      * @throws IllegalArgumentException {@code num1<=num2}
      */
     public static void assertGt(int num1, int num2, String msgFormat, Object... params) {
-        if (num1 <= num2)
+        if (num1 <= num2) {
             throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+        }
     }
 
     /**
@@ -58,8 +80,9 @@ public class Assert {
      * @throws IllegalArgumentException {@code num1<num2}
      */
     public static void assertGe(int num1, int num2, String msgFormat, Object... params) {
-        if (num1 < num2)
+        if (num1 < num2) {
             throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+        }
     }
 
     /**
@@ -72,8 +95,9 @@ public class Assert {
      * @throws IllegalArgumentException {@code num1>=num2}
      */
     public static void assertLt(int num1, int num2, String msgFormat, Object... params) {
-        if (num1 > num2)
+        if (num1 > num2) {
             throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+        }
     }
 
     /**
@@ -86,8 +110,9 @@ public class Assert {
      * @throws IllegalArgumentException {@code num1>num2}
      */
     public static void assertLe(int num1, int num2, String msgFormat, Object... params) {
-        if (num1 < num2)
+        if (num1 < num2) {
             throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+        }
     }
 
     /**
@@ -98,7 +123,12 @@ public class Assert {
      * @throws IllegalArgumentException obj1 is not equals to obj2
      */
     public static void assertEquals(Object obj1, Object obj2) {
-        assertEquals(obj1, obj2, "Obj1 is not equals to obj2");
+        if (null == obj1 && obj2 != null)
+            throw new IllegalArgumentException();
+        if (obj1 == obj2)
+            return;
+        if (!obj1.equals(obj2))
+            throw new IllegalArgumentException();
     }
 
     /**
@@ -120,4 +150,15 @@ public class Assert {
             throw new IllegalArgumentException(msg);
     }
 
+    public static void assertTrue(boolean value) {
+        if (!value) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void assertFalse(boolean value) {
+        if (value) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
