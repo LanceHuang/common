@@ -2,6 +2,7 @@ package com.lance.common.tool.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Utilities of time-format and so on.
@@ -25,6 +26,14 @@ public class TimeUtils {
 
     public static String format(long time) {
         return sdf.format(time);
+    }
+
+    public static void sleep(long time) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
