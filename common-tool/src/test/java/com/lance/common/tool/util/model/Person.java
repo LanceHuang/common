@@ -1,4 +1,4 @@
-package com.lance.common.tool.util;
+package com.lance.common.tool.util.model;
 
 import java.util.Date;
 

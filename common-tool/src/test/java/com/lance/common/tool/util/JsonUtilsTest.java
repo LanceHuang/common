@@ -1,5 +1,6 @@
 package com.lance.common.tool.util;
 
+import com.lance.common.tool.util.model.Person;
 import org.junit.Test;
 
 import java.util.Date;
