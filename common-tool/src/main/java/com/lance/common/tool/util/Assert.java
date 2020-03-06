@@ -1,164 +1,88 @@
 package com.lance.common.tool.util;
 
+import java.util.Collection;
+
 /**
- * Assertion.It's mainly used for formatting message of assertion.
+ * Assertion.
  *
  * @author Lance
  * @date 2016/10/27 18:04
  */
 public class Assert {
 
-    /**
-     * Assert that object isn't {@code null}
-     *
-     * @param obj       expected object
-     * @param msgFormat message format
-     * @param params    parameters
-     * @throws IllegalArgumentException object is {@code null}
-     */
+    public static void assertNull(Object obj, String msgFormat, Object... params) {
+        if (obj != null) {
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
+        }
+    }
+
     public static void assertNotNull(Object obj, String msgFormat, Object... params) {
-        if (null == obj) {
-            throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+        if (obj == null) {
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
         }
     }
 
-    public static void assertNotNull(Object obj) {
-        if (null == obj) {
-            throw new IllegalArgumentException();
+    public static void assertTrue(boolean value, String msgFormat, Object... params) {
+        if (!value) {
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
         }
     }
 
-    /**
-     * Assert that object isn't {@code null} and empty
-     *
-     * @param str       expected string
-     * @param msgFormat message format
-     * @param params    parameters
-     * @throws IllegalArgumentException object is {@code null}
-     */
-    @Deprecated
-    public static void assertNotNullOrEmpty(String str, String msgFormat, Object... params) {
-        if (null == str || str.isEmpty()) {
-            throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+    public static void assertFalse(boolean value, String msgFormat, Object... params) {
+        if (value) {
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
         }
     }
 
-    public static void assertNotBlank(String str, String msgFormat, Object... params) {
-        if (null == str || str.isEmpty()) {
-            throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
-        }
-    }
-
-    public static void assertNotBlank(String str) {
-        if (null == str || str.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    /**
-     * Assert that {@code num1>num2}
-     *
-     * @param num1      expected bigger one
-     * @param num2      expected smaller one
-     * @param msgFormat message format
-     * @param params    parameters
-     * @throws IllegalArgumentException {@code num1<=num2}
-     */
     public static void assertGt(int num1, int num2, String msgFormat, Object... params) {
         if (num1 <= num2) {
-            throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
         }
     }
 
-    /**
-     * Assert that {@code num1>=num2}
-     *
-     * @param num1      expected bigger one
-     * @param num2      expected smaller one
-     * @param msgFormat message format
-     * @param params    parameters
-     * @throws IllegalArgumentException {@code num1<num2}
-     */
     public static void assertGe(int num1, int num2, String msgFormat, Object... params) {
         if (num1 < num2) {
-            throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
         }
     }
 
-    /**
-     * Assert that {@code num1<num2}
-     *
-     * @param num1      expected smaller one
-     * @param num2      expected bigger one
-     * @param msgFormat message format
-     * @param params    parameters
-     * @throws IllegalArgumentException {@code num1>=num2}
-     */
     public static void assertLt(int num1, int num2, String msgFormat, Object... params) {
         if (num1 > num2) {
-            throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
         }
     }
 
-    /**
-     * Assert that {@code num1>=num2}
-     *
-     * @param num1      expected smaller one
-     * @param num2      expected bigger one
-     * @param msgFormat message format
-     * @param params    parameters
-     * @throws IllegalArgumentException {@code num1>num2}
-     */
     public static void assertLe(int num1, int num2, String msgFormat, Object... params) {
         if (num1 < num2) {
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
+        }
+    }
+
+    public static void assertEquals(int num1, int num2, String msgFormat, Object... params) {
+        if (num1 != num2) {
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
+        }
+    }
+
+    public static void assertEquals(Object obj1, Object obj2, String msgFormat, Object... params) {
+        if (obj1 == null && obj2 != null)
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
+        if (obj1 == obj2)
+            return;
+        if (!obj1.equals(obj2))
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
+    }
+
+    public static void assertNotEmpty(Collection<?> c, String msgFormat, Object... params) {
+        if (c == null || c.isEmpty()) {
+            throw new IllegalArgumentException(msgFormat == null ? null : String.format(msgFormat, params));
+        }
+    }
+
+    public static void assertNotEmpty(String str, String msgFormat, Object... params) {
+        if (null == str || str.isEmpty()) {
             throw new IllegalArgumentException(null == msgFormat ? null : String.format(msgFormat, params));
         }
     }
 
-    /**
-     * Assert that obj1 is equals to obj2
-     *
-     * @param obj1 expected object
-     * @param obj2 expected object
-     * @throws IllegalArgumentException obj1 is not equals to obj2
-     */
-    public static void assertEquals(Object obj1, Object obj2) {
-        if (null == obj1 && obj2 != null)
-            throw new IllegalArgumentException();
-        if (obj1 == obj2)
-            return;
-        if (!obj1.equals(obj2))
-            throw new IllegalArgumentException();
-    }
-
-    /**
-     * Assert that obj1 is equals to obj2
-     *
-     * @param obj1      expected object
-     * @param obj2      expected object
-     * @param msgFormat message format
-     * @param params    parameters
-     * @throws IllegalArgumentException obj1 is not equals to obj2
-     */
-    public static void assertEquals(Object obj1, Object obj2, String msgFormat, Object... params) {
-        String msg = (null == msgFormat ? null : String.format(msgFormat, params));
-        if (null == obj1 && obj2 != null)
-            throw new IllegalArgumentException(msg);
-        if (obj1 == obj2)
-            return;
-        if (!obj1.equals(obj2))
-            throw new IllegalArgumentException(msg);
-    }
-
-    public static void assertTrue(boolean value) {
-        if (!value) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static void assertFalse(boolean value) {
-        if (value) {
-            throw new IllegalArgumentException();
-        }
-    }
 }

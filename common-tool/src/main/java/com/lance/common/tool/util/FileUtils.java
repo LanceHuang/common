@@ -77,7 +77,7 @@ public class FileUtils {
     public static boolean renameTo(File file, String newName) {
         Assert.assertNotNull(file, "File cannot be null");
         Assert.assertEquals(existFile(file), true, "Invalid file");
-        Assert.assertNotNullOrEmpty(newName, "Invalid new filename");
+        Assert.assertNotEmpty(newName, "Invalid new filename");
 
         return file.renameTo(new File(file.getParent() + File.separator + newName));
     }
