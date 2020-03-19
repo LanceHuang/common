@@ -8,13 +8,20 @@ import java.util.concurrent.TimeUnit;
  * Utilities of time-format and so on.
  *
  * @author Lance
+ * @see java.util.GregorianCalendar
  * @since 2019/6/18 15:58
  */
 public class TimeUtils {
 
-    private static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
-    private static final SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_DATE_FORMAT);
+    public static final SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_DATE_FORMAT);
+
+    public static final long ONE_SECOND = 1000;
+    public static final long ONE_MINUTE = 60 * ONE_SECOND;
+    public static final long ONE_HOUR   = 60 * ONE_MINUTE;
+    public static final long ONE_DAY    = 24 * ONE_HOUR;
+    public static final long ONE_WEEK   = 7 * ONE_DAY;
 
     public static long now() {
         return System.currentTimeMillis();
