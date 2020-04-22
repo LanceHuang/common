@@ -12,6 +12,7 @@
         <module>common-tool</module>
         <module>common-core</module>
         <module>common-web-parent</module>
+        <module>common-lab</module>
     </modules>
 
     <properties>
