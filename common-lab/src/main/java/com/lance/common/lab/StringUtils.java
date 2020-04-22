@@ -8,7 +8,7 @@ import java.util.Stack;
 public class StringUtils {
 
     /**
-     * Minimum Edit Distance. O(nm)
+     * Minimum Edit Distance. S(nm), T(nm)
      *
      * @link https://www.jianshu.com/p/a617d20162cf
      */
@@ -47,6 +47,51 @@ public class StringUtils {
             }
         }
         return d[n][m];
+    }
+
+    /**
+     * S(m), T(nm)
+     */
+    public static int lev2(String str1, String str2) {
+        if (str1 == null || str2 == null) {
+            return str1 == null ? (str2 == null ? 0 : str2.length()) : str1.length();
+        }
+
+        int n = str1.length();
+        int m = str2.length();
+        if (Math.min(n, m) == 0) {
+            return Math.max(n, m);
+        }
+
+        /*
+            0 0 x y z
+            0 0 1 2 3
+            x 1 0 1 2
+            x 2 1 1 2
+            c 3 2 2 2
+         */
+
+        int[] d = new int[m + 1];
+        for (int j = 0; j <= m; j++) {
+            d[j] = j;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            int tmp = d[0];
+            d[0] = i;
+            for (int j = 1; j <= m; j++) {
+                int a = d[j - 1] + 1;
+                int b = d[j] + 1;
+                int c = tmp;
+                if (str1.charAt(i - 1) != str2.charAt(j - 1)) {
+                    c += 1;
+                }
+
+                tmp = d[j];
+                d[j] = Math.min(Math.min(a, b), c);
+            }
+        }
+        return d[m];
     }
 
     public static void trackLev(String str1, String str2) {
