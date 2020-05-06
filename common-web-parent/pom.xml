@@ -9,19 +9,14 @@
         <version>1.0.0</version>
     </parent>
     <artifactId>common-web-parent</artifactId>
-    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
 
     <properties>
         <servlet.version>3.1.0</servlet.version>
-        <spring.version>4.1.6.RELEASE</spring.version>
         <mybatis.version>3.2.8</mybatis.version>
         <mybatis-spring.version>1.2.2</mybatis-spring.version>
         <mysql.version>5.1.34</mysql.version>
-
-        <compiler.version>3.1</compiler.version>
-        <resources.version>2.6</resources.version>
-        <surefire.version>2.12.4</surefire.version>
     </properties>
 
     <dependencyManagement>
@@ -88,30 +83,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <!-- version of jdk and encoding -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${compiler.version}</version>
-                </plugin>
-
-                <!-- encoding of resources file, like xml -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>${resources.version}</version>
-                </plugin>
-
-                <!-- skip unit test -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${surefire.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>
