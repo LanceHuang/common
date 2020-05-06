@@ -1,4 +1,4 @@
-package com.lance.common.lab;
+package com.lance.common.tool.util;
 
 import java.util.Stack;
 
@@ -19,8 +19,8 @@ public class StringUtils {
 
         int n = str1.length();
         int m = str2.length();
-        if (Math.min(n, m) == 0) {
-            return Math.max(n, m);
+        if (java.lang.Math.min(n, m) == 0) {
+            return java.lang.Math.max(n, m);
         }
 
         // If min(i,j)=0, lev(i,j)=max(i,j)
@@ -43,7 +43,7 @@ public class StringUtils {
                     c += 1;
                 }
 
-                d[i][j] = Math.min(Math.min(a, b), c);
+                d[i][j] = java.lang.Math.min(java.lang.Math.min(a, b), c);
             }
         }
         return d[n][m];
@@ -59,8 +59,8 @@ public class StringUtils {
 
         int n = str1.length();
         int m = str2.length();
-        if (Math.min(n, m) == 0) {
-            return Math.max(n, m);
+        if (java.lang.Math.min(n, m) == 0) {
+            return java.lang.Math.max(n, m);
         }
 
         /*
@@ -88,7 +88,7 @@ public class StringUtils {
                 }
 
                 tmp = d[j];
-                d[j] = Math.min(Math.min(a, b), c);
+                d[j] = java.lang.Math.min(java.lang.Math.min(a, b), c);
             }
         }
         return d[m];
@@ -135,7 +135,7 @@ public class StringUtils {
                     c += 1;
                 }
 
-                int currVal = Math.min(Math.min(a, b), c);
+                int currVal = java.lang.Math.min(java.lang.Math.min(a, b), c);
                 if (currVal == c) {
                     p[i][j] = new Position(i - 1, j - 1);
                 } else if (currVal == a) {

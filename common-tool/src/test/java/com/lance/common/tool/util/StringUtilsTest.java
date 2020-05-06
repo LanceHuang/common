@@ -1,4 +1,4 @@
-package com.lance.common.lab;
+package com.lance.common.tool.util;
 
 import org.junit.Test;
 
