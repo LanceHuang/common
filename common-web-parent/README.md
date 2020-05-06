@@ -1,1 +1,1 @@
-Managing those dependency that a web project frequently used.
+常用web配置
