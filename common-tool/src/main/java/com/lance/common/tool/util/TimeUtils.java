@@ -5,11 +5,9 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Utilities of time-format and so on.
+ * 时间工具类
  *
  * @author Lance
- * @see java.util.GregorianCalendar
- * @since 2019/6/18 15:58
  */
 public class TimeUtils {
 
