@@ -79,6 +79,12 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
                 <version>1.0.0</version>
+                <configuration>
+                    <!-- 也处理package=pom的pom.xml -->
+                    <updatePomFile>true</updatePomFile>
+                    <!-- 不删除dependencyManagement相关信息 -->
+                    <flattenMode>bom</flattenMode>
+                </configuration>
                 <executions>
                     <!-- 清理flatten配置 -->
                     <execution>
