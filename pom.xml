@@ -80,6 +80,16 @@
                 <artifactId>flatten-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <executions>
+                    <!-- 清理flatten配置 -->
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- 替换版本占位符，精简POM -->
                     <execution>
                         <id>flatten</id>
                         <phase>process-resources</phase>
