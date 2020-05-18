@@ -7,7 +7,6 @@ import java.util.Date;
  * Utilities of date
  *
  * @author Lance
- * @since 2020/1/14 17:11
  */
 public class DateUtils {
 
@@ -21,6 +20,24 @@ public class DateUtils {
         } catch (Exception e) {
             throw new IllegalArgumentException("Illegal date string: " + dateStr);
         }
+    }
+
+    public static Date parse(String dateStr, String formatStr) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatStr);
+        try {
+            return simpleDateFormat.parse(dateStr);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Illegal date string: " + dateStr);
+        }
+    }
+
+    public static String format(Date date) {
+        return sdf.format(date);
+    }
+
+    public static String format(Date date, String formatStr) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatStr);
+        return simpleDateFormat.format(date);
     }
 
 }

@@ -16,9 +16,9 @@ import java.util.Map;
  */
 public class JsonUtils {
 
-    private static ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = new ObjectMapper();
 
-    private static TypeFactory typeFactory = TypeFactory.defaultInstance();
+    private static final TypeFactory typeFactory = TypeFactory.defaultInstance();
 
     static {
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

@@ -2,9 +2,8 @@ package com.lance.common.tool.util;
 
 /**
  * @author Lance
- * @date 2016/11/30
  */
-public class Pair<K, V> {
+class Pair<K, V> {
 
     private K key;
     private V value;

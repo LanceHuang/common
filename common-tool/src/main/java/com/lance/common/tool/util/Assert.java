@@ -6,7 +6,6 @@ import java.util.Collection;
  * Assertion.
  *
  * @author Lance
- * @date 2016/10/27 18:04
  */
 public class Assert {
 

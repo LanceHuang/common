@@ -3,17 +3,21 @@ package com.lance.common.tool.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 
 /**
  * Methods for copy stream, rename file and so on.
  *
  * @author Lance
- * @date 2016/10/27 10:53
  */
 public class FileUtils {
 
-    private static Logger LOG = LoggerFactory.getLogger(FileUtils.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FileUtils.class);
 
     private static final int SIZE_BUFF = 4096;
 
@@ -25,7 +29,6 @@ public class FileUtils {
      *
      * @param in  input stream
      * @param out output stream
-     * @throws IOException
      */
     public static int copy(InputStream in, OutputStream out) throws IOException {
         Assert.assertNotNull(in, "InputStream cannot be null");
@@ -34,7 +37,7 @@ public class FileUtils {
         try {
             int totalRead = 0;
             byte[] buff = new byte[SIZE_BUFF];
-            int count = -1;
+            int count;
             while ((count = in.read(buff)) > 0) {
                 out.write(buff, 0, count);
                 totalRead += count;
@@ -51,7 +54,6 @@ public class FileUtils {
      *
      * @param in  input stream
      * @param out output stream
-     * @throws IOException
      */
     public static int copyAndClose(InputStream in, OutputStream out) throws IOException {
         Assert.assertNotNull(in, "InputStream cannot be null");
@@ -80,76 +82,6 @@ public class FileUtils {
         Assert.assertNotEmpty(newName, "Invalid new filename");
 
         return file.renameTo(new File(file.getParent() + File.separator + newName));
-    }
-
-    /**
-     * Close input stream.
-     *
-     * @param in input stream expected be closed
-     * @throws IOException Fail to close inputStream
-     * @see #close(Closeable)
-     */
-    @Deprecated
-    public static void close(InputStream in) throws IOException {
-        if (null != in) {
-            try {
-                in.close();
-            } catch (IOException e) {
-                throw new IOException("Fail to close inputStream", e);
-            }
-        }
-    }
-
-    /**
-     * Close input stream.
-     *
-     * @param in input stream expected be closed
-     * @see #closeQuietly(Closeable)
-     */
-    @Deprecated
-    public static void closeQuietly(InputStream in) {
-        if (null != in) {
-            try {
-                in.close();
-            } catch (IOException e) {
-                LOG.error(e.getMessage(), e);
-            }
-        }
-    }
-
-    /**
-     * Close output stream.
-     *
-     * @param out output stream expected be closed
-     * @throws IOException Fail to close outputStream
-     * @see #close(Closeable)
-     */
-    @Deprecated
-    public static void close(OutputStream out) throws IOException {
-        if (null != out) {
-            try {
-                out.close();
-            } catch (IOException e) {
-                throw new IOException("Fail to close outputStream", e);
-            }
-        }
-    }
-
-    /**
-     * Close output stream.
-     *
-     * @param out output stream expected be closed
-     * @see #closeQuietly(Closeable)
-     */
-    @Deprecated
-    public static void closeQuietly(OutputStream out) {
-        if (null != out) {
-            try {
-                out.close();
-            } catch (IOException e) {
-                LOG.error(e.getMessage(), e);
-            }
-        }
     }
 
     /**

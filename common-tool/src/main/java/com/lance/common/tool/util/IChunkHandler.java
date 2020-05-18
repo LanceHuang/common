@@ -6,7 +6,6 @@ import java.io.InputStream;
  * Handling fileupload by chunk, it can be used for upload file chunk into local path or hdfs. Also it can separately save file chunk or make them one.
  *
  * @author Lance
- * @date 2016/10/26 20:10
  * @see LocalChunkHandler
  */
 public interface IChunkHandler {
