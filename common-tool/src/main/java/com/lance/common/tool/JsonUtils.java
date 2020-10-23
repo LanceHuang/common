@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Json tool
+ * json工具类
  *
  * @author Lance
  */
@@ -26,7 +26,6 @@ public class JsonUtils {
 
     private JsonUtils() {
     }
-
 
     /**
      * Transform object to json.

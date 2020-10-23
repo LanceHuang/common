@@ -3,12 +3,14 @@ package com.lance.common.tool;
 import java.util.Stack;
 
 /**
+ * 字符串工具类
+ *
  * @author Lance
  */
 public class StringUtils {
 
     /**
-     * Minimum Edit Distance. S(nm), T(nm)
+     * 计算最小编辑距离MED，S(nm)，T(nm)
      *
      * @link https://www.jianshu.com/p/a617d20162cf
      */
@@ -50,7 +52,7 @@ public class StringUtils {
     }
 
     /**
-     * S(m), T(nm)
+     * 计算最小编辑距离MED，S(m), T(nm)
      */
     public static int lev2(String str1, String str2) {
         if (str1 == null || str2 == null) {
