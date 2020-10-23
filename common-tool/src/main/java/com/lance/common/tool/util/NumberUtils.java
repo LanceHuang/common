@@ -6,6 +6,13 @@ package com.lance.common.tool.util;
 public class NumberUtils {
 
     /**
+     * 判断是否2的幂
+     */
+    public static boolean isPowerOfTwo(int value) {
+        return (value & -value) == value;
+    }
+
+    /**
      * long值转换成byte数组
      */
     public static byte[] longToByteArray(long value) {
