@@ -1,7 +1,6 @@
-package com.lance.common.tool.util;
+package com.lance.common.tool;
 
-import com.lance.common.tool.JsonUtils;
-import com.lance.common.tool.util.model.Person;
+import com.lance.common.tool.model.Person;
 import org.junit.Test;
 
 import java.util.Date;

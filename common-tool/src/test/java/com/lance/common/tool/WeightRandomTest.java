@@ -1,4 +1,4 @@
-package com.lance.common.tool.util;
+package com.lance.common.tool;
 
 import com.lance.common.tool.WeightRandom;
 import org.junit.Test;
