@@ -1,5 +1,6 @@
 package com.lance.common.tool.util;
 
+import com.lance.common.tool.StringUtils;
 import org.junit.Test;
 
 public class StringUtilsTest {

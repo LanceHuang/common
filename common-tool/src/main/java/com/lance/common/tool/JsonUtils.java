@@ -1,4 +1,4 @@
-package com.lance.common.tool.util;
+package com.lance.common.tool;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;

@@ -1,5 +1,7 @@
 package com.lance.common.tool.util;
 
+import com.lance.common.tool.ICompressUtils;
+import com.lance.common.tool.ZipCompressUtil;
 import org.junit.Test;
 
 import java.io.File;

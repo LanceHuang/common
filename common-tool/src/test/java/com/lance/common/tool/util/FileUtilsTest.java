@@ -1,5 +1,6 @@
 package com.lance.common.tool.util;
 
+import com.lance.common.tool.FileUtils;
 import org.junit.Test;
 
 import java.io.File;

@@ -1,5 +1,6 @@
 package com.lance.common.tool.util;
 
+import com.lance.common.tool.MD5Utils;
 import org.junit.Test;
 
 /**

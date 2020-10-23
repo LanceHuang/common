@@ -1,4 +1,4 @@
-package com.lance.common.tool.util;
+package com.lance.common.tool;
 
 import java.io.File;
 import java.io.IOException;

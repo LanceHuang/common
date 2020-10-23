@@ -2,7 +2,7 @@ package com.lance.common.tool.util;
 
 import org.junit.Test;
 
-import static com.lance.common.tool.util.NumberUtils.*;
+import static com.lance.common.tool.NumberUtils.*;
 
 /**
  * @author Lance

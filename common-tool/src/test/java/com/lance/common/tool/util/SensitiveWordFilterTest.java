@@ -1,9 +1,8 @@
 package com.lance.common.tool.util;
 
+import com.lance.common.tool.SensitiveWordFilter;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class SensitiveWordFilterTest {
 

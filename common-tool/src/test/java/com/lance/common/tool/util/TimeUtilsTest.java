@@ -1,5 +1,6 @@
 package com.lance.common.tool.util;
 
+import com.lance.common.tool.TimeUtils;
 import org.junit.Test;
 
 public class TimeUtilsTest {

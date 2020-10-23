@@ -1,5 +1,6 @@
 package com.lance.common.tool.util;
 
+import com.lance.common.tool.WeightRandom;
 import org.junit.Test;
 
 public class WeightRandomTest {

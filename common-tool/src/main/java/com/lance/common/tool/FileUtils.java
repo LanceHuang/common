@@ -1,4 +1,4 @@
-package com.lance.common.tool.util;
+package com.lance.common.tool;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
