@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * 目前只能擦除一层的泛型：TestEntity -> AbstractEntity
+ *
  * @author Lance
  */
 public class TClass {
