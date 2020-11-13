@@ -44,14 +44,14 @@ public class TClass {
             return;
         }
 
-        // 处理成员变量
+        // 处理父类
+        parseTClass(tClass, ctx, rootClass.getSuperclass());
+
+        // 处理子类
         for (Field f : rootClass.getDeclaredFields()) {
             Type bindType = ctx.bind(f.getGenericType());
             tClass.addField(new TField(f, bindType));
         }
-
-        // 处理父类
-        parseTClass(tClass, ctx, rootClass.getSuperclass());
     }
 
     /**
