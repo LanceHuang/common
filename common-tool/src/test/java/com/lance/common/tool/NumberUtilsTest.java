@@ -1,6 +1,6 @@
 package com.lance.common.tool;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.lance.common.tool.NumberUtils.*;
 

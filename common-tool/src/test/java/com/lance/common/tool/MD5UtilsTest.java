@@ -1,7 +1,7 @@
 package com.lance.common.tool;
 
 import com.lance.common.tool.MD5Utils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Created by Lance on 2016/8/12.

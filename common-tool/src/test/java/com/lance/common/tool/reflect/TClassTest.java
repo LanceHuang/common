@@ -1,6 +1,6 @@
 package com.lance.common.tool.reflect;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Lance

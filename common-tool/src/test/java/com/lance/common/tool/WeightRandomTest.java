@@ -1,7 +1,7 @@
 package com.lance.common.tool;
 
 import com.lance.common.tool.WeightRandom;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WeightRandomTest {
 

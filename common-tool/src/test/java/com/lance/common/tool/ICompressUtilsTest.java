@@ -1,8 +1,6 @@
 package com.lance.common.tool;
 
-import com.lance.common.tool.ICompressUtils;
-import com.lance.common.tool.ZipCompressUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 

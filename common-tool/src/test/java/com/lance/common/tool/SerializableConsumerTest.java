@@ -1,7 +1,7 @@
 package com.lance.common.tool;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
 
@@ -15,7 +15,7 @@ public class SerializableConsumerTest {
     public void test() throws NoSuchMethodException {
         SerializableConsumer<String> consumer = this::sop;
         Method m = consumer.getClass().getDeclaredMethod("writeReplace");
-        Assert.assertNotNull(m);
+        Assertions.assertNotNull(m);
     }
 
     private void sop(String message) {

@@ -11,6 +11,7 @@
     <modules>
         <module>common-tool</module>
         <module>common-web-parent</module>
+        <module>common-test</module>
     </modules>
 
     <properties>
@@ -20,7 +21,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <junit.version>4.13</junit.version>
         <junit5.version>5.6.2</junit5.version>
         <slf4j.version>1.7.6</slf4j.version>
 
@@ -44,11 +44,6 @@
                 <groupId>org.junit.vintage</groupId>
                 <artifactId>junit-vintage-engine</artifactId>
                 <version>${junit5.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
             </dependency>
 
             <!-- log -->

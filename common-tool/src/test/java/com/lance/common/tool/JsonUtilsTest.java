@@ -1,7 +1,7 @@
 package com.lance.common.tool;
 
 import com.lance.common.tool.model.Person;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 import java.util.HashMap;
