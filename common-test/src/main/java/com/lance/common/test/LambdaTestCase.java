@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * lambda测试用例
+ * lambda测试用例，参考 https://www.javacodegeeks.com/2016/07/junit-5-dynamic-tests.html
  *
  * @author Lance
  * @since 2020/12/31
