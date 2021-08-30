@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,15 +17,17 @@ import java.util.Map;
  *
  * @author Lance
  */
-public class JsonUtils {
+public final class JsonUtils {
 
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final Logger LOG = LoggerFactory.getLogger(JsonUtils.class);
 
-    private static final TypeFactory typeFactory = TypeFactory.defaultInstance();
+    private static final ObjectMapper MAPPER = new ObjectMapper();
+
+    private static final TypeFactory TYPE_FACTORY = TypeFactory.defaultInstance();
 
     static {
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        MAPPER.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }
 
     private JsonUtils() {
@@ -32,12 +36,13 @@ public class JsonUtils {
     /**
      * Transform object to json.
      */
-    public static String object2json(Object obj) throws Exception {
+    public static String object2json(Object obj) {
         try {
-            return mapper.writeValueAsString(obj);
+            return MAPPER.writeValueAsString(obj);
         } catch (JsonProcessingException e) {
-            throw new Exception("Failed to parse object.", e);
+            LOG.error("Failed to parse object.", e);
         }
+        return null;
     }
 
     /**
@@ -45,23 +50,25 @@ public class JsonUtils {
      *
      * @param str String of json format
      */
-    public static <T> T json2object(String str, Class<T> clazz) throws Exception {
+    public static <T> T json2object(String str, Class<T> clazz) {
         try {
-            return mapper.readValue(str, clazz);
+            return MAPPER.readValue(str, clazz);
         } catch (JsonProcessingException e) {
-            throw new Exception("Failed to parse json.", e);
+            LOG.error("Failed to parse json.", e);
         }
+        return null;
     }
 
     /**
      * Transform map to json.
      */
-    public static <K, V> String map2json(Map<K, V> data) throws Exception {
+    public static <K, V> String map2json(Map<K, V> data) {
         try {
-            return mapper.writeValueAsString(data);
+            return MAPPER.writeValueAsString(data);
         } catch (JsonProcessingException e) {
-            throw new Exception("Failed to parse map.", e);
+            LOG.error("Failed to parse map.", e);
         }
+        return null;
     }
 
     /**
@@ -69,13 +76,14 @@ public class JsonUtils {
      *
      * @param str String of json format
      */
-    public static Map<String, Object> json2map(String str) throws Exception {
-        MapType mapType = typeFactory.constructMapType(HashMap.class, String.class, Object.class);
+    public static Map<String, Object> json2map(String str) {
+        MapType mapType = TYPE_FACTORY.constructMapType(HashMap.class, String.class, Object.class);
         try {
-            return mapper.readValue(str, mapType);
+            return MAPPER.readValue(str, mapType);
         } catch (JsonProcessingException e) {
-            throw new Exception("Failed to parse json.", e);
+            LOG.error("Failed to parse json.", e);
         }
+        return null;
     }
 
     /**
@@ -83,13 +91,14 @@ public class JsonUtils {
      *
      * @param str String of json format
      */
-    public static <K, V> Map<K, V> json2map(String str, Class<K> kClass, Class<V> vClass) throws Exception {
-        MapType mapType = typeFactory.constructMapType(HashMap.class, kClass, vClass);
+    public static <K, V> Map<K, V> json2map(String str, Class<K> kClass, Class<V> vClass) {
+        MapType mapType = TYPE_FACTORY.constructMapType(HashMap.class, kClass, vClass);
         try {
-            return mapper.readValue(str, mapType);
+            return MAPPER.readValue(str, mapType);
         } catch (JsonProcessingException e) {
-            throw new Exception("Failed to parse json.", e);
+            LOG.error("Failed to parse json.", e);
         }
+        return null;
     }
 
 }
