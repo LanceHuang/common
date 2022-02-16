@@ -35,4 +35,24 @@ public class NumberUtils {
         }
         return result;
     }
+
+    public static int max(Integer num1, Integer num2) {
+        if (num1 == null) {
+            num1 = 0;
+        }
+        if (num2 == null) {
+            num2 = 0;
+        }
+        return Integer.max(num1, num2);
+    }
+
+    public static long max(Long num1, Long num2) {
+        if (num1 == null) {
+            num1 = 0L;
+        }
+        if (num2 == null) {
+            num2 = 0L;
+        }
+        return Long.max(num1, num2);
+    }
 }
