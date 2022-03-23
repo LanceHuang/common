@@ -6,7 +6,6 @@ import org.springframework.scheduling.support.SimpleTriggerContext;
 
 import java.util.Date;
 import java.util.concurrent.Delayed;
-import java.util.concurrent.FutureTask;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -17,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @author Lance
  * @since 2022/3/23
  */
-public class CronTask extends FutureTask<Object> implements ScheduledFuture<Object> {
+public class CronTask extends FutureCaller<Object> implements ScheduledFuture<Object> {
 
     /** 执行器 */
     private final ScheduledExecutorService scheduledExecutorService;
@@ -34,7 +33,7 @@ public class CronTask extends FutureTask<Object> implements ScheduledFuture<Obje
     }
 
     @Override
-    public void run() {
+    public Object call() {
         if (!isCancelled()) {
             // 执行
             Date actualExecutionTime = new Date();
@@ -45,6 +44,7 @@ public class CronTask extends FutureTask<Object> implements ScheduledFuture<Obje
             // 计算下一轮
             schedule();
         }
+        return null;
     }
 
     /**

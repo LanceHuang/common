@@ -9,7 +9,7 @@ import java.util.concurrent.ScheduledFuture;
  * @author Lance
  * @since 2022/3/23
  */
-public interface CronExecutorService extends ScheduledExecutorService {
+public interface CronScheduledExecutorService extends ScheduledExecutorService {
 
     /**
      * 创建并执行cron任务

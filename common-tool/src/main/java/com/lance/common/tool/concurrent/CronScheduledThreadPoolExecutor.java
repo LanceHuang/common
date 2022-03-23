@@ -11,21 +11,21 @@ import java.util.concurrent.ThreadFactory;
  * @author Lance
  * @since 2022/3/23
  */
-public class ScheduledCronExecutor extends ScheduledThreadPoolExecutor implements CronExecutorService {
+public class CronScheduledThreadPoolExecutor extends ScheduledThreadPoolExecutor implements CronScheduledExecutorService {
 
-    public ScheduledCronExecutor(int corePoolSize) {
+    public CronScheduledThreadPoolExecutor(int corePoolSize) {
         super(corePoolSize);
     }
 
-    public ScheduledCronExecutor(int corePoolSize, ThreadFactory threadFactory) {
+    public CronScheduledThreadPoolExecutor(int corePoolSize, ThreadFactory threadFactory) {
         super(corePoolSize, threadFactory);
     }
 
-    public ScheduledCronExecutor(int corePoolSize, RejectedExecutionHandler handler) {
+    public CronScheduledThreadPoolExecutor(int corePoolSize, RejectedExecutionHandler handler) {
         super(corePoolSize, handler);
     }
 
-    public ScheduledCronExecutor(int corePoolSize, ThreadFactory threadFactory, RejectedExecutionHandler handler) {
+    public CronScheduledThreadPoolExecutor(int corePoolSize, ThreadFactory threadFactory, RejectedExecutionHandler handler) {
         super(corePoolSize, threadFactory, handler);
     }
 
