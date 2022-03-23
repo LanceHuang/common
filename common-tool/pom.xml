@@ -39,6 +39,12 @@
             <artifactId>guava</artifactId>
             <version>25.1-jre</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 </project>
