@@ -1,8 +1,7 @@
 package com.lance.common.tool.concurrent;
 
-import java.util.Objects;
+import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadFactory;
 
@@ -31,9 +30,10 @@ public class ScheduledCronExecutor extends ScheduledThreadPoolExecutor implement
     }
 
     @Override
-    public ScheduledFuture<?> scheduleCron(Runnable command, String cron) {
-        Objects.requireNonNull(command, "command cannot be null");
-        Objects.requireNonNull(cron, "cron cannot be null");
+    public Future<?> scheduleCron(Runnable command, String cron) {
+        if (command == null || cron == null) {
+            throw new NullPointerException();
+        }
 
         CronTask cronTask = new CronTask(this, command, cron);
         cronTask.schedule();
