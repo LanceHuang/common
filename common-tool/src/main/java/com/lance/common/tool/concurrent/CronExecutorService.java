@@ -1,7 +1,7 @@
 package com.lance.common.tool.concurrent;
 
-import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 
 /**
  * cron执行器
@@ -18,5 +18,5 @@ public interface CronExecutorService extends ScheduledExecutorService {
      * @param cron    表达式
      * @return future
      */
-    Future<?> scheduleCron(Runnable command, String cron);
+    ScheduledFuture<?> scheduleCron(Runnable command, String cron);
 }

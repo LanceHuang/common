@@ -5,18 +5,19 @@ import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.scheduling.support.SimpleTriggerContext;
 
 import java.util.Date;
-import java.util.concurrent.Future;
+import java.util.concurrent.Delayed;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 /**
- * cron任务。这里没必要实现ScheduledFuture，ScheduledThreadPoolExecutor中会直接将Future添加到队列中，所以需要用到Delayed
+ * cron任务
  *
  * @author Lance
  * @since 2022/3/23
  */
-public class CronTask extends FutureTask<Object> {
+public class CronTask extends FutureTask<Object> implements ScheduledFuture<Object> {
 
     /** 执行器 */
     private final ScheduledExecutorService scheduledExecutorService;
@@ -51,7 +52,7 @@ public class CronTask extends FutureTask<Object> {
      *
      * @return 任务future
      */
-    public Future<?> schedule() {
+    public ScheduledFuture<?> schedule() {
         this.scheduledExecutionTime = trigger.nextExecutionTime(triggerContext);
         if (this.scheduledExecutionTime == null) {
             return null;
@@ -61,5 +62,17 @@ public class CronTask extends FutureTask<Object> {
         long delay = this.scheduledExecutionTime.getTime() - System.currentTimeMillis();
         this.scheduledExecutorService.schedule(this, delay, TimeUnit.MILLISECONDS);
         return this;
+    }
+
+    @Override
+    public long getDelay(TimeUnit unit) {
+        return unit.convert(this.scheduledExecutionTime.getTime() - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+    }
+
+    @Override
+    public int compareTo(Delayed o) {
+        // 不需要实现，ScheduledThreadPoolExecutor会直接将ScheduledFuture添加到队列中，所以需要用到Delayed
+        // 这里实现ScheduledFuture，只是为了让调用者可以调用getDelay，获取到下个任务执行的时间
+        return 0;
     }
 }

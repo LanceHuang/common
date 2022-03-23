@@ -1,7 +1,7 @@
 package com.lance.common.tool.concurrent;
 
-import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadFactory;
 
@@ -30,7 +30,7 @@ public class ScheduledCronExecutor extends ScheduledThreadPoolExecutor implement
     }
 
     @Override
-    public Future<?> scheduleCron(Runnable command, String cron) {
+    public ScheduledFuture<?> scheduleCron(Runnable command, String cron) {
         if (command == null || cron == null) {
             throw new NullPointerException();
         }
