@@ -102,14 +102,14 @@ public class ThreadPoolTaskScheduler extends ScheduledThreadPoolExecutor impleme
     }
 
     private Runnable decorate(Runnable runnable) {
-        if (errorHandler != null) {
+        if (runnable != null && errorHandler != null) {
             runnable = new CatchableRunner(runnable, errorHandler);
         }
         return runnable;
     }
 
     private <V> Callable<V> decorate(Callable<V> callable) {
-        if (errorHandler != null) {
+        if (callable != null && errorHandler != null) {
             callable = new CatchableCaller<>(callable, errorHandler);
         }
         return callable;
