@@ -20,7 +20,7 @@ public class TriggerTask extends FutureCaller<Object> implements ScheduledFuture
     /** 执行器 */
     private final ScheduledExecutorService scheduledExecutorService;
 
-    /** cron时间计算 */
+    /** trigger */
     private final SimpleTriggerContext triggerContext = new SimpleTriggerContext();
     private final Trigger trigger;
     private Date scheduledExecutionTime;
