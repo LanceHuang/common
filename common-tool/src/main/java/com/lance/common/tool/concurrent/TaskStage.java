@@ -2,6 +2,18 @@ package com.lance.common.tool.concurrent;
 
 /**
  * 任务阶段处理。业务开发中，经常用到
+ * <pre>
+ * long t1 = System.currentTimeMills();
+ * try {
+ *     delegate.run();
+ * } catch (Exception e) {
+ *     logger.error("exception occurs", e);
+ * } final {
+ *     long t2 = System.currentTimeMills();
+ *     long useTime = t2 - t1;
+ *     statManager.stat(taskName, useTime);
+ * }
+ * </pre>
  *
  * @author Lance
  * @since 2022/3/24
