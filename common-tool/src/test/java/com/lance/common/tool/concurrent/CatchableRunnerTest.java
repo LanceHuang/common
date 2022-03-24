@@ -7,13 +7,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * @author Lance
  * @since 2022/3/23
  */
-class CatchableTaskTest {
+class CatchableRunnerTest {
 
     @Test
     void test() throws InterruptedException {
@@ -30,7 +28,7 @@ class CatchableTaskTest {
     @Test
     void testCatchable() throws InterruptedException {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.submit(new CatchableTask(() -> {
+        executorService.submit(new CatchableRunner(() -> {
             ThreadUtils.sleep(1000L);
             System.out.println("Run task");
             throw new RuntimeException("An exception");

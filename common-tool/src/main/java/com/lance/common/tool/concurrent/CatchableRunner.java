@@ -6,13 +6,13 @@ package com.lance.common.tool.concurrent;
  * @author Lance
  * @since 2022/3/23
  */
-public class CatchableTask implements Runnable {
+public class CatchableRunner implements Runnable {
 
     private final Runnable delegate;
 
     private final ErrorHandler errorHandler;
 
-    public CatchableTask(Runnable delegate, ErrorHandler errorHandler) {
+    public CatchableRunner(Runnable delegate, ErrorHandler errorHandler) {
         this.delegate = delegate;
         this.errorHandler = errorHandler;
     }
@@ -21,7 +21,7 @@ public class CatchableTask implements Runnable {
     public void run() {
         try {
             delegate.run();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             errorHandler.handleError(e);
         }
     }
