@@ -1,7 +1,6 @@
 package com.lance.common.tool.concurrent;
 
 import org.springframework.scheduling.Trigger;
-import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.scheduling.support.SimpleTriggerContext;
 
 import java.util.Date;
@@ -11,12 +10,12 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 /**
- * cron任务
+ * 触发型任务
  *
  * @author Lance
  * @since 2022/3/23
  */
-public class CronTask extends FutureCaller<Object> implements ScheduledFuture<Object> {
+public class TriggerTask extends FutureCaller<Object> implements ScheduledFuture<Object> {
 
     /** 执行器 */
     private final ScheduledExecutorService scheduledExecutorService;
@@ -26,10 +25,10 @@ public class CronTask extends FutureCaller<Object> implements ScheduledFuture<Ob
     private final Trigger trigger;
     private Date scheduledExecutionTime;
 
-    public CronTask(ScheduledExecutorService scheduledExecutorService, Runnable delegate, String cron) {
+    public TriggerTask(ScheduledExecutorService scheduledExecutorService, Runnable delegate, Trigger trigger) {
         super(delegate, null);
         this.scheduledExecutorService = scheduledExecutorService;
-        this.trigger = new CronTrigger(cron);
+        this.trigger = trigger;
     }
 
     @Override
@@ -61,7 +60,7 @@ public class CronTask extends FutureCaller<Object> implements ScheduledFuture<Ob
         }
 
         // 可直接操作cancel，不需要ScheduledExecutorService.schedule的返回值
-        // 如果想cancel掉该任务，只需要调用CronTask.cancel，调用CronTask.run时会做判断
+        // 如果想cancel掉该任务，只需要调用TriggerTask.cancel，调用TriggerTask.run时会做判断
         long delay = this.scheduledExecutionTime.getTime() - System.currentTimeMillis();
         this.scheduledExecutorService.schedule(this, delay, TimeUnit.MILLISECONDS);
         return this;
