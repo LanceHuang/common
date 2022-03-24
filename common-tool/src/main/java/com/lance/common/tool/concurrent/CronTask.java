@@ -41,8 +41,10 @@ public class CronTask extends FutureCaller<Object> implements ScheduledFuture<Ob
             Date completionTime = new Date();
             triggerContext.update(scheduledExecutionTime, actualExecutionTime, completionTime);
 
-            // 计算下一轮
-            schedule();
+            // 计算下一轮：这里再做一次判断，上面的runAndReset可能会比较耗时，到这的时候如果被cancel，没必要调用schedule
+            if (!isCancelled()) {
+                schedule();
+            }
         }
         return null;
     }
@@ -59,6 +61,7 @@ public class CronTask extends FutureCaller<Object> implements ScheduledFuture<Ob
         }
 
         // 可直接操作cancel，不需要ScheduledExecutorService.schedule的返回值
+        // 如果想cancel掉该任务，只需要调用CronTask.cancel，调用CronTask.run时会做判断
         long delay = this.scheduledExecutionTime.getTime() - System.currentTimeMillis();
         this.scheduledExecutorService.schedule(this, delay, TimeUnit.MILLISECONDS);
         return this;

@@ -6,7 +6,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadFactory;
 
 /**
- * cron调度器，在ScheduledThreadPoolExecutor的基础上添加了cron
+ * cron调度器。JDK自带的ScheduledThreadPoolExecutor不支持Cron，Spring schedule不支持热更
  *
  * @author Lance
  * @since 2022/3/23
