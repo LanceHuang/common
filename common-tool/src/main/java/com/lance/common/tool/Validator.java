@@ -1,5 +1,6 @@
 package com.lance.common.tool;
 
+import java.util.Collection;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -153,5 +154,96 @@ public class Validator<T> {
             throw new IllegalArgumentException();
         }
         return this;
+    }
+
+    public static void between(int num, int a, int b) {
+        if (a > num || num > b) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
+    public static void mustNull(Object obj) {
+        if (obj != null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void nonNull(Object obj) {
+        if (obj == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void mustTrue(boolean value) {
+        if (!value) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void mustFalse(boolean value) {
+        if (value) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void gt(int num1, int num2) {
+        if (num1 <= num2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void ge(int num1, int num2) {
+        if (num1 < num2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void lt(int num1, int num2) {
+        if (num1 > num2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void le(int num1, int num2) {
+        if (num1 < num2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void equals(int num1, int num2) {
+        if (!Objects.equals(num1, num2)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void notEquals(int num1, int num2) {
+        if (Objects.equals(num1, num2)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void equals(Object obj1, Object obj2) {
+        if (!Objects.equals(obj1, obj2)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void notEquals(Object obj1, Object obj2) {
+        if (Objects.equals(obj1, obj2)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void notEmpty(Collection<?> c) {
+        if (c == null || c.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void notEmpty(String str) {
+        if (null == str || str.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
     }
 }

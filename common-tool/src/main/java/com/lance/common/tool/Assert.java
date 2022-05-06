@@ -6,6 +6,8 @@ import java.util.Collection;
  * 断言工具，可用在service层。稍微修改一下，可提高service代码可读性
  *
  * @author Lance
+ * @see Validator
+ * @deprecated
  */
 public class Assert {
 
